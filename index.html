@@ -7,9 +7,7 @@
 <title>شیرینکده | شیرینی با عشق</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 :root {
     --brown: #713516;
@@ -39,15 +37,8 @@ header {
     box-shadow: 0 5px 18px #552b1933;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 34px;
-}
-
-header p {
-    margin-bottom: 0;
-    color: #ffe5c6;
-}
+header h1 { margin: 0; font-size: 34px; }
+header p { margin-bottom: 0; color: #ffe5c6; }
 
 .hero {
     min-height: 330px;
@@ -79,9 +70,7 @@ header p {
     margin: 5px;
 }
 
-.hero p {
-    line-height: 2;
-}
+.hero p { line-height: 2; }
 
 .hero button {
     background: var(--brown);
@@ -188,9 +177,7 @@ button {
     transition: .2s;
 }
 
-button:active {
-    transform: scale(.96);
-}
+button:active { transform: scale(.96); }
 
 .add {
     background: var(--pink);
@@ -202,13 +189,9 @@ button:active {
     margin-top: 5px;
 }
 
-.add:hover {
-    background: #f18d91;
-}
+.add:hover { background: #f18d91; }
 
-.cart,
-.customer-form,
-.order-message {
+.cart, .customer-form, .order-message {
     background: #fff9ef;
     padding: 22px;
     margin-top: 28px;
@@ -217,10 +200,7 @@ button:active {
     box-shadow: 0 7px 20px #71351618;
 }
 
-.cart h2,
-.customer-form h2 {
-    color: var(--brown);
-}
+.cart h2, .customer-form h2 { color: var(--brown); }
 
 .cart-item {
     display: flex;
@@ -249,9 +229,7 @@ button:active {
     gap: 8px;
 }
 
-.quantity span {
-    font-weight: bold;
-}
+.quantity span { font-weight: bold; }
 
 #total, #totalPrice {
     font-weight: bold;
@@ -278,9 +256,7 @@ input {
     margin-top: 10px;
 }
 
-.order-btn:hover {
-    background: #914a25;
-}
+.order-btn:hover { background: #914a25; }
 
 .clear-btn {
     background: #f5d5c6;
@@ -324,9 +300,7 @@ textarea {
     line-height: 2;
 }
 
-.benefit span {
-    font-size: 28px;
-}
+.benefit span { font-size: 28px; }
 
 footer {
     text-align: center;
@@ -337,43 +311,22 @@ footer {
     line-height: 2.2;
 }
 
-footer a {
-    color: #ffe2b9;
-}
+footer a { color: #ffe2b9; }
 
 @media (max-width: 500px) {
-    header h1 {
-        font-size: 27px;
-    }
-
-    .hero {
-        min-height: 270px;
-    }
-
-    .hero h2 {
-        font-size: 25px;
-    }
+    header h1 { font-size: 27px; }
+    .hero { min-height: 270px; }
+    .hero h2 { font-size: 25px; }
 
     .products {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
     }
 
-    .product {
-        padding: 8px;
-    }
-
-    .product-image {
-        height: 115px;
-    }
-
-    .product h3 {
-        font-size: 14px;
-    }
-
-    .product-controls {
-        gap: 5px;
-    }
+    .product { padding: 8px; }
+    .product-image { height: 115px; }
+    .product h3 { font-size: 14px; }
+    .product-controls { gap: 5px; }
 
     .product-controls button {
         width: 32px;
@@ -385,9 +338,7 @@ footer a {
         padding: 7px;
     }
 
-    .benefits {
-        grid-template-columns: 1fr;
-    }
+    .benefits { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -416,28 +367,16 @@ footer a {
 <div class="products" id="products"></div>
 
 <div class="benefits">
-    <div class="benefit">
-        <span>🚚</span>
-        <br>ارسال سفارش
-    </div>
-    <div class="benefit">
-        <span>🍪</span>
-        <br>تازه و خوشمزه
-    </div>
-    <div class="benefit">
-        <span>❤️</span>
-        <br>تهیه‌شده با عشق
-    </div>
+    <div class="benefit"><span>🚚</span><br>ارسال سفارش</div>
+    <div class="benefit"><span>🍪</span><br>تازه و خوشمزه</div>
+    <div class="benefit"><span>❤️</span><br>تهیه‌شده با عشق</div>
 </div>
 
 <section class="cart">
     <h2>🛒 سبد خرید شیرینکده</h2>
-
     <div id="cartItems">سبد خرید شما خالی است.</div>
-
     <p id="total">تعداد کل بسته‌ها: ۰</p>
     <p id="totalPrice">قیمت کل سفارش: به‌زودی</p>
-
     <button class="clear-btn" onclick="clearCart()">
         🗑 پاک کردن سبد خرید
     </button>
@@ -451,9 +390,6 @@ footer a {
 
     <input type="tel" id="customerPhone"
     placeholder="شماره تماس مشتری">
-
-    <input type="text" id="customerAddress"
-    placeholder="آدرس کوتاه: شهر، محله، خیابان، کوچه و پلاک">
 
     <button class="order-btn" onclick="sendOrder('09903126670')">
         📩 ثبت سفارش برای حامی
@@ -487,9 +423,7 @@ footer a {
     <p>فلاح: <a href="tel:09923683723">09923683723</a></p>
     <p>
         روبیکا:
-        <a href="https://rubika.ir/metimetimeteti">
-            صفحه شیرینکده
-        </a>
+        <a href="https://rubika.ir/metimetimeteti">صفحه شیرینکده</a>
     </p>
     <p>شیرینکده، شیرینی با عشق ❤️</p>
 </footer>
@@ -693,31 +627,26 @@ function makeOrderMessage() {
 
     const name = document.getElementById("customerName").value.trim();
     const phone = document.getElementById("customerPhone").value.trim();
-    const address = document.getElementById("customerAddress").value.trim();
 
-    if (!name || !phone || !address) {
-        alert("لطفاً نام، شماره تماس و آدرس خود را وارد کن.");
+    if (!name || !phone) {
+        alert("لطفاً نام و شماره تماس خود را وارد کن.");
         return null;
     }
 
     let message = "سلام، سفارش جدید شیرینکده ثبت شد 🍪\n\n";
 
     message += "نام مشتری: " + name + "\n";
-    message += "شماره تماس: " + phone + "\n";
-    message += "آدرس مشتری: " + address + "\n\n";
-
+    message += "شماره تماس: " + phone + "\n\n";
     message += "محصولات سفارش:\n";
 
     let total = 0;
 
     for (const product in cart) {
-        message += product + " : " + cart[product] + " بسته\n";
-        message += "قیمت کل این محصول: به‌زودی\n";
+        message += product + ": " + cart[product] + " بسته\n";
         total += cart[product];
     }
 
     message += "\nتعداد کل بسته‌ها: " + total;
-    message += "\nقیمت کل سفارش: به‌زودی";
 
     return message;
 }
@@ -739,10 +668,14 @@ function sendOrder(phoneNumber) {
 }
 
 async function copyOrder() {
+    const message = makeOrderMessage();
+    if (!message) return;
+
     const textarea = document.getElementById("messageText");
+    textarea.value = message;
 
     try {
-        await navigator.clipboard.writeText(textarea.value);
+        await navigator.clipboard.writeText(message);
         alert("متن سفارش کپی شد ❤️");
     } catch (error) {
         textarea.focus();
