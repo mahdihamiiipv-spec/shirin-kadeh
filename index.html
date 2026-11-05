@@ -1,72 +1,153 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شیرینکده</title>
+<title>شیرینکده | شیرینی با عشق</title>
 
 <style>
 * {
     box-sizing: border-box;
 }
 
+:root {
+    --brown: #713516;
+    --dark: #4d2615;
+    --cream: #fff4e5;
+    --pink: #f7aaa8;
+    --gold: #d99a55;
+}
+
 body {
     margin: 0;
     font-family: Tahoma, sans-serif;
-    background: #fff8ed;
-    color: #563b2d;
+    color: var(--dark);
+    background:
+        linear-gradient(rgba(255,246,232,.86), rgba(255,239,219,.88)),
+        url("https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1600");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 header {
-    background: #754b35;
+    background: linear-gradient(120deg, #6b3016, #a65b2c);
     color: white;
     text-align: center;
-    padding: 25px 10px;
+    padding: 23px 12px;
+    box-shadow: 0 5px 18px #552b1933;
 }
 
 header h1 {
-    margin: 0 0 10px;
+    margin: 0;
+    font-size: 34px;
+}
+
+header p {
+    margin-bottom: 0;
+    color: #ffe5c6;
 }
 
 .hero {
+    min-height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 30px 15px;
-    background: #f3dfc5;
+    padding: 45px 15px;
+    background:
+        linear-gradient(90deg, #fff0d7dd, #fff0d799),
+        url("https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=1400");
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-content {
+    background: #fff7e9e8;
+    padding: 25px;
+    border-radius: 28px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 25px #71351622;
+    border: 2px solid #f5d1a8;
+}
+
+.hero h2 {
+    font-size: 30px;
+    color: var(--brown);
+    margin: 5px;
+}
+
+.hero p {
+    line-height: 2;
+}
+
+.hero button {
+    background: var(--brown);
+    color: white;
+    padding: 14px 25px;
+    font-size: 16px;
 }
 
 .container {
-    max-width: 850px;
+    max-width: 1100px;
     margin: auto;
-    padding: 15px;
+    padding: 18px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 27px;
+    color: var(--brown);
+    margin: 25px 0;
 }
 
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
 }
 
 .product {
-    background: white;
-    border-radius: 12px;
-    padding: 15px 10px;
+    background: #fff9ef;
+    border: 2px solid #f5d4b2;
+    border-radius: 22px;
+    padding: 12px;
     text-align: center;
-    box-shadow: 0 2px 8px #00000012;
+    box-shadow: 0 7px 20px #71351620;
+    transition: transform .25s, box-shadow .25s;
+    overflow: hidden;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px #71351630;
+}
+
+.product-image {
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #f6dfc6;
 }
 
 .product h3 {
-    font-size: 16px;
+    font-size: 17px;
     min-height: 40px;
+    color: var(--brown);
 }
 
 .price {
-    color: #a36c39;
+    color: #a45c27;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .product-count {
     color: #80563d;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     margin: 12px 0;
 }
@@ -75,43 +156,70 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin: 10px 0;
+    gap: 10px;
+    margin: 12px 0;
 }
 
-.product-controls button {
-    background: #f1dfca;
-    color: #563b2d;
-    font-size: 18px;
-    min-width: 42px;
+.product-controls button,
+.quantity button {
+    background: var(--brown);
+    color: white;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .product-controls span {
+    background: white;
+    border: 1px solid #e7c6a8;
+    border-radius: 10px;
+    padding: 8px 14px;
+    min-width: 55px;
     font-weight: bold;
-    min-width: 35px;
-    text-align: center;
 }
 
 button {
     border: none;
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-family: inherit;
     cursor: pointer;
-    margin: 4px;
+    font-family: inherit;
+    transition: .2s;
+}
+
+button:active {
+    transform: scale(.96);
 }
 
 .add {
-    background: #80563d;
-    color: white;
-    width: 95%;
+    background: var(--pink);
+    color: #542719;
+    width: 100%;
+    border-radius: 13px;
+    padding: 12px 8px;
+    font-weight: bold;
+    margin-top: 5px;
 }
 
-.cart {
-    background: white;
-    padding: 18px;
-    margin-top: 25px;
-    border-radius: 12px;
+.add:hover {
+    background: #f18d91;
+}
+
+.cart,
+.customer-form,
+.order-message {
+    background: #fff9ef;
+    padding: 22px;
+    margin-top: 28px;
+    border-radius: 22px;
+    border: 2px solid #f1d2ae;
+    box-shadow: 0 7px 20px #71351618;
+}
+
+.cart h2,
+.customer-form h2 {
+    color: var(--brown);
 }
 
 .cart-item {
@@ -119,9 +227,9 @@ button {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
-    border-bottom: 1px solid #eee;
-    padding: 12px 0;
+    gap: 10px;
+    border-bottom: 1px dashed #dfc1a2;
+    padding: 14px 0;
 }
 
 .cart-item-info {
@@ -138,48 +246,46 @@ button {
 .quantity {
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
-.quantity button {
-    background: #f1dfca;
-    color: #563b2d;
+.quantity span {
+    font-weight: bold;
 }
 
-.customer-form {
-    background: white;
-    padding: 18px;
-    margin-top: 20px;
-    border-radius: 12px;
+#total, #totalPrice {
+    font-weight: bold;
+    color: var(--brown);
 }
 
 input {
     width: 100%;
-    padding: 12px;
+    padding: 13px;
     margin: 8px 0;
-    border: 1px solid #d8c3ad;
-    border-radius: 8px;
+    border: 1px solid #dfc1a2;
+    border-radius: 12px;
     font-family: inherit;
+    background: white;
 }
 
 .order-btn {
     width: 100%;
-    background: #80563d;
+    background: var(--brown);
     color: white;
-    padding: 14px;
-    font-size: 16px;
-    margin-top: 12px;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 13px;
+    margin-top: 10px;
+}
+
+.order-btn:hover {
+    background: #914a25;
 }
 
 .clear-btn {
-    background: #ead6c2;
-    color: #563b2d;
-}
-
-.order-message {
-    display: none;
-    background: white;
-    padding: 18px;
-    margin-top: 20px;
+    background: #f5d5c6;
+    color: #713516;
+    padding: 12px 17px;
     border-radius: 12px;
 }
 
@@ -188,29 +294,100 @@ textarea {
     min-height: 190px;
     padding: 12px;
     border: 1px solid #d8c3ad;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: Tahoma, sans-serif;
     line-height: 2;
 }
 
 .copy-btn {
-    background: #80563d;
+    background: var(--brown);
     color: white;
     width: 100%;
-    padding: 13px;
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.benefit {
+    text-align: center;
+    background: #fff7e9;
+    border: 1px solid #f1d2ae;
+    border-radius: 16px;
+    padding: 16px 8px;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.benefit span {
+    font-size: 28px;
 }
 
 footer {
     text-align: center;
-    padding: 25px 10px;
-    margin-top: 25px;
-    background: #754b35;
+    padding: 28px 10px;
+    margin-top: 30px;
+    background: linear-gradient(120deg, #542611, #884523);
     color: white;
-    line-height: 2;
+    line-height: 2.2;
 }
 
 footer a {
-    color: white;
+    color: #ffe2b9;
+}
+
+@media (max-width: 500px) {
+    header h1 {
+        font-size: 27px;
+    }
+
+    .hero {
+        min-height: 270px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .product {
+        padding: 8px;
+    }
+
+    .product-image {
+        height: 115px;
+    }
+
+    .product h3 {
+        font-size: 14px;
+    }
+
+    .product-controls {
+        gap: 5px;
+    }
+
+    .product-controls button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .product-controls span {
+        min-width: 35px;
+        padding: 7px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
@@ -219,22 +396,42 @@ footer a {
 
 <header>
     <h1>🍪 شیرینکده 🍪</h1>
-    <p>طعم شیرین لحظه‌های زندگی</p>
+    <p>طعم شیرین لحظه‌های زندگی ❤️</p>
 </header>
 
 <section class="hero">
-    <h2>به شیرینکده خوش آمدید</h2>
-    <p>با عشق و بهترین مواد اولیه آماده شده‌اند ❤️</p>
+    <div class="hero-content">
+        <h2>به شیرینکده خوش آمدید 🍪</h2>
+        <p>شیرینی‌های خوشمزه و خانگی، آماده‌شده با عشق برای لحظه‌های شیرین شما ❤️</p>
+        <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+            مشاهده محصولات 🍰
+        </button>
+    </div>
 </section>
 
 <div class="container">
 
-<h2>محصولات ما</h2>
+<h2 class="section-title">🍪 محصولات خوشمزه ما 🍪</h2>
 
 <div class="products" id="products"></div>
 
+<div class="benefits">
+    <div class="benefit">
+        <span>🚚</span>
+        <br>ارسال سفارش
+    </div>
+    <div class="benefit">
+        <span>🍪</span>
+        <br>تازه و خوشمزه
+    </div>
+    <div class="benefit">
+        <span>❤️</span>
+        <br>تهیه‌شده با عشق
+    </div>
+</div>
+
 <section class="cart">
-    <h2>🛒 سبد خرید</h2>
+    <h2>🛒 سبد خرید شیرینکده</h2>
 
     <div id="cartItems">سبد خرید شما خالی است.</div>
 
@@ -242,24 +439,18 @@ footer a {
     <p id="totalPrice">قیمت کل سفارش: به‌زودی</p>
 
     <button class="clear-btn" onclick="clearCart()">
-        پاک کردن سبد خرید
+        🗑 پاک کردن سبد خرید
     </button>
 </section>
 
 <section class="customer-form">
-    <h2>ثبت سفارش</h2>
+    <h2>📝 ثبت سفارش</h2>
 
-    <input
-        type="text"
-        id="customerName"
-        placeholder="نام و نام خانوادگی"
-    >
+    <input type="text" id="customerName"
+    placeholder="نام و نام خانوادگی">
 
-    <input
-        type="tel"
-        id="customerPhone"
-        placeholder="شماره تماس مشتری"
-    >
+    <input type="tel" id="customerPhone"
+    placeholder="شماره تماس مشتری">
 
     <button class="order-btn" onclick="sendOrder('09903126670')">
         📩 ثبت سفارش برای حامی
@@ -270,11 +461,9 @@ footer a {
     </button>
 </section>
 
-<section class="order-message" id="orderMessage">
-    <h3>متن سفارش شما آماده است</h3>
-
+<section class="order-message" id="orderMessage" style="display:none">
+    <h3>متن سفارش شما آماده است ❤️</h3>
     <p id="smsTarget"></p>
-
     <textarea id="messageText" readonly></textarea>
 
     <button class="copy-btn" onclick="copyOrder()">
@@ -282,15 +471,15 @@ footer a {
     </button>
 
     <p>
-        اگر برنامه پیامک باز نشد، متن بالا را کپی کن،
-        برنامه پیامک را باز کن و برای شماره مقصد بفرست.
+        اگر برنامه پیامک باز نشد، متن بالا را کپی کن و
+        در برنامه پیامک برای شماره مقصد بفرست.
     </p>
 </section>
 
 </div>
 
 <footer>
-    <p>راه‌های ارتباط با شیرینکده</p>
+    <h3>🍪 راه‌های ارتباط با شیرینکده 🍪</h3>
     <p>حامی: <a href="tel:09903126670">09903126670</a></p>
     <p>فلاح: <a href="tel:09923683723">09923683723</a></p>
     <p>
@@ -299,35 +488,56 @@ footer a {
             صفحه شیرینکده
         </a>
     </p>
-    <p>🍪 شیرینکده، شیرینی با عشق 🍪</p>
+    <p>شیرینکده، شیرینی با عشق ❤️</p>
 </footer>
 
 <script>
-
 const products = [
-    "نان لشت نشا",
-    "نان تخته‌ای",
-    "شیرینی نارگیلی",
-    "شیرینی گردویی",
-    "انواع ویفر دست ساز",
-    "کلوچه فومن"
+    {
+        name: "نان لشت نشا",
+        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600"
+    },
+    {
+        name: "نان تخته‌ای",
+        image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=600"
+    },
+    {
+        name: "شیرینی نارگیلی",
+        image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600"
+    },
+    {
+        name: "شیرینی گردویی",
+        image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600"
+    },
+    {
+        name: "انواع ویفر دست ساز",
+        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600"
+    },
+    {
+        name: "کلوچه فومن",
+        image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600"
+    }
 ];
 
 const STEP = 5;
-
 let cart = {};
 
 function showProducts() {
     const container = document.getElementById("products");
-
     container.innerHTML = "";
 
-    products.forEach((name, index) => {
+    products.forEach((product, index) => {
         const card = document.createElement("div");
         card.className = "product";
 
+        const image = document.createElement("img");
+        image.className = "product-image";
+        image.src = product.image;
+        image.alt = product.name;
+        image.loading = "lazy";
+
         const title = document.createElement("h3");
-        title.textContent = name;
+        title.textContent = product.name;
 
         const price = document.createElement("p");
         price.className = "price";
@@ -342,6 +552,7 @@ function showProducts() {
 
         const minus = document.createElement("button");
         minus.textContent = "−";
+        minus.setAttribute("aria-label", "کم کردن تعداد");
         minus.onclick = () => changeProductQuantity(index, -STEP);
 
         const number = document.createElement("span");
@@ -349,16 +560,17 @@ function showProducts() {
 
         const plus = document.createElement("button");
         plus.textContent = "+";
+        plus.setAttribute("aria-label", "زیاد کردن تعداد");
         plus.onclick = () => changeProductQuantity(index, STEP);
 
         controls.append(minus, number, plus);
 
         const button = document.createElement("button");
         button.className = "add";
-        button.textContent = "افزودن ۵ بسته";
+        button.textContent = "افزودن ۵ بسته 🛒";
         button.onclick = () => changeProductQuantity(index, STEP);
 
-        card.append(title, price, count, controls, button);
+        card.append(image, title, price, count, controls, button);
         container.appendChild(card);
 
         updateProductCount(index);
@@ -366,7 +578,7 @@ function showProducts() {
 }
 
 function updateProductCount(index) {
-    const name = products[index];
+    const name = products[index].name;
     const quantity = cart[name] || 0;
 
     const count = document.getElementById("product-count-" + index);
@@ -384,13 +596,9 @@ function updateProductCount(index) {
 }
 
 function changeProductQuantity(index, amount) {
-    const name = products[index];
+    const name = products[index].name;
 
-    if (!cart[name]) {
-        cart[name] = 0;
-    }
-
-    cart[name] += amount;
+    cart[name] = (cart[name] || 0) + amount;
 
     if (cart[name] <= 0) {
         delete cart[name];
@@ -421,11 +629,10 @@ function showCart() {
     const totalElement = document.getElementById("total");
 
     container.innerHTML = "";
-
     let total = 0;
 
     if (Object.keys(cart).length === 0) {
-        container.textContent = "سبد خرید شما خالی است.";
+        container.textContent = "سبد خرید شما خالی است. 🍪";
     }
 
     for (const name in cart) {
@@ -454,14 +661,13 @@ function showCart() {
         minus.onclick = () => changeQuantity(name, -STEP);
 
         const count = document.createElement("span");
-        count.textContent = " " + cart[name] + " بسته ";
+        count.textContent = cart[name] + " بسته";
 
         const plus = document.createElement("button");
         plus.textContent = "+";
         plus.onclick = () => changeQuantity(name, STEP);
 
         quantity.append(minus, count, plus);
-
         item.append(info, quantity);
         container.appendChild(item);
     }
@@ -471,7 +677,7 @@ function showCart() {
     document.getElementById("totalPrice").textContent =
         "قیمت کل سفارش: به‌زودی";
 
-    products.forEach((name, index) => {
+    products.forEach((product, index) => {
         updateProductCount(index);
     });
 }
@@ -491,7 +697,6 @@ function makeOrderMessage() {
     }
 
     let message = "سلام، سفارش جدید شیرینکده ثبت شد 🍪\n\n";
-
     message += "نام مشتری: " + name + "\n";
     message += "شماره تماس: " + phone + "\n\n";
     message += "محصولات سفارش:\n";
@@ -512,21 +717,16 @@ function makeOrderMessage() {
 
 function sendOrder(phoneNumber) {
     const message = makeOrderMessage();
-
     if (!message) return;
-
-    const messageBox = document.getElementById("orderMessage");
-    const textarea = document.getElementById("messageText");
 
     document.getElementById("smsTarget").textContent =
         "شماره مقصد: " + phoneNumber;
 
-    textarea.value = message;
-    messageBox.style.display = "block";
+    document.getElementById("messageText").value = message;
+    document.getElementById("orderMessage").style.display = "block";
 
     const smsLink =
-        "sms:" + phoneNumber + "?body=" +
-        encodeURIComponent(message);
+        "sms:" + phoneNumber + "?body=" + encodeURIComponent(message);
 
     window.location.assign(smsLink);
 }
@@ -553,7 +753,6 @@ async function copyOrder() {
 
 showProducts();
 showCart();
-
 </script>
 
 </body>
