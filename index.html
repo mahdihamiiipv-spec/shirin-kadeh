@@ -391,6 +391,9 @@ footer a { color: #ffe2b9; }
     <input type="tel" id="customerPhone"
     placeholder="شماره تماس مشتری">
 
+    <input type="text" id="customerAddress"
+    placeholder="محله، خیابان و کوچه">
+
     <button class="order-btn" onclick="sendOrder('09903126670')">
         📩 ثبت سفارش برای حامی
     </button>
@@ -627,16 +630,19 @@ function makeOrderMessage() {
 
     const name = document.getElementById("customerName").value.trim();
     const phone = document.getElementById("customerPhone").value.trim();
+    const address = document.getElementById("customerAddress").value.trim();
 
-    if (!name || !phone) {
-        alert("لطفاً نام و شماره تماس خود را وارد کن.");
+    if (!name || !phone || !address) {
+        alert("لطفاً نام، شماره تماس و محله و آدرس خود را وارد کن.");
         return null;
     }
 
     let message = "سلام، سفارش جدید شیرینکده ثبت شد 🍪\n\n";
 
     message += "نام مشتری: " + name + "\n";
-    message += "شماره تماس: " + phone + "\n\n";
+    message += "شماره تماس: " + phone + "\n";
+    message += "محله و آدرس: " + address + "\n\n";
+
     message += "محصولات سفارش:\n";
 
     let total = 0;
