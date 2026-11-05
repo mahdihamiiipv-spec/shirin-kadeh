@@ -64,6 +64,34 @@ header h1 {
     font-size: 14px;
 }
 
+.product-count {
+    color: #80563d;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.product-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.product-controls button {
+    background: #f1dfca;
+    color: #563b2d;
+    font-size: 18px;
+    min-width: 42px;
+}
+
+.product-controls span {
+    font-weight: bold;
+    min-width: 35px;
+    text-align: center;
+}
+
 button {
     border: none;
     border-radius: 8px;
@@ -76,6 +104,7 @@ button {
 .add {
     background: #80563d;
     color: white;
+    width: 95%;
 }
 
 .cart {
@@ -89,9 +118,26 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
     border-bottom: 1px solid #eee;
-    padding: 10px 0;
+    padding: 12px 0;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.cart-price {
+    color: #a36c39;
+    font-size: 13px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
 }
 
 .quantity button {
@@ -189,8 +235,12 @@ footer a {
 
 <section class="cart">
     <h2>🛒 سبد خرید</h2>
+
     <div id="cartItems">سبد خرید شما خالی است.</div>
+
     <p id="total">تعداد کل بسته‌ها: ۰</p>
+    <p id="totalPrice">قیمت کل سفارش: به‌زودی</p>
+
     <button class="clear-btn" onclick="clearCart()">
         پاک کردن سبد خرید
     </button>
@@ -263,6 +313,8 @@ const products = [
     "کلوچه فومن"
 ];
 
+const STEP = 5;
+
 let cart = {};
 
 function showProducts() {
@@ -281,28 +333,75 @@ function showProducts() {
         price.className = "price";
         price.textContent = "قیمت: به‌زودی";
 
+        const count = document.createElement("p");
+        count.className = "product-count";
+        count.id = "product-count-" + index;
+
+        const controls = document.createElement("div");
+        controls.className = "product-controls";
+
+        const minus = document.createElement("button");
+        minus.textContent = "−";
+        minus.onclick = () => changeProductQuantity(index, -STEP);
+
+        const number = document.createElement("span");
+        number.id = "product-number-" + index;
+
+        const plus = document.createElement("button");
+        plus.textContent = "+";
+        plus.onclick = () => changeProductQuantity(index, STEP);
+
+        controls.append(minus, number, plus);
+
         const button = document.createElement("button");
         button.className = "add";
-        button.textContent = "افزودن به سبد خرید";
-        button.onclick = () => addToCart(index);
+        button.textContent = "افزودن ۵ بسته";
+        button.onclick = () => changeProductQuantity(index, STEP);
 
-        card.append(title, price, button);
+        card.append(title, price, count, controls, button);
         container.appendChild(card);
+
+        updateProductCount(index);
     });
 }
 
-function addToCart(index) {
+function updateProductCount(index) {
+    const name = products[index];
+    const quantity = cart[name] || 0;
+
+    const count = document.getElementById("product-count-" + index);
+    const number = document.getElementById("product-number-" + index);
+
+    if (count) {
+        count.textContent =
+            "تعداد انتخاب‌شده: " + quantity +
+            " بسته | قیمت کل: به‌زودی";
+    }
+
+    if (number) {
+        number.textContent = quantity;
+    }
+}
+
+function changeProductQuantity(index, amount) {
     const name = products[index];
 
     if (!cart[name]) {
         cart[name] = 0;
     }
 
-    cart[name]++;
+    cart[name] += amount;
+
+    if (cart[name] <= 0) {
+        delete cart[name];
+    }
+
     showCart();
 }
 
 function changeQuantity(name, amount) {
+    if (!cart[name]) return;
+
     cart[name] += amount;
 
     if (cart[name] <= 0) {
@@ -335,29 +434,46 @@ function showCart() {
         const item = document.createElement("div");
         item.className = "cart-item";
 
-        const title = document.createElement("span");
+        const info = document.createElement("div");
+        info.className = "cart-item-info";
+
+        const title = document.createElement("strong");
         title.textContent = name;
+
+        const price = document.createElement("span");
+        price.className = "cart-price";
+        price.textContent = "قیمت کل این محصول: به‌زودی";
+
+        info.append(title, price);
 
         const quantity = document.createElement("div");
         quantity.className = "quantity";
 
         const minus = document.createElement("button");
         minus.textContent = "−";
-        minus.onclick = () => changeQuantity(name, -1);
+        minus.onclick = () => changeQuantity(name, -STEP);
 
         const count = document.createElement("span");
-        count.textContent = " " + cart[name] + " ";
+        count.textContent = " " + cart[name] + " بسته ";
 
         const plus = document.createElement("button");
         plus.textContent = "+";
-        plus.onclick = () => changeQuantity(name, 1);
+        plus.onclick = () => changeQuantity(name, STEP);
 
         quantity.append(minus, count, plus);
-        item.append(title, quantity);
+
+        item.append(info, quantity);
         container.appendChild(item);
     }
 
     totalElement.textContent = "تعداد کل بسته‌ها: " + total;
+
+    document.getElementById("totalPrice").textContent =
+        "قیمت کل سفارش: به‌زودی";
+
+    products.forEach((name, index) => {
+        updateProductCount(index);
+    });
 }
 
 function makeOrderMessage() {
@@ -384,10 +500,12 @@ function makeOrderMessage() {
 
     for (const product in cart) {
         message += product + " : " + cart[product] + " بسته\n";
+        message += "قیمت کل این محصول: به‌زودی\n";
         total += cart[product];
     }
 
     message += "\nتعداد کل بسته‌ها: " + total;
+    message += "\nقیمت کل سفارش: به‌زودی";
 
     return message;
 }
@@ -410,7 +528,6 @@ function sendOrder(phoneNumber) {
         "sms:" + phoneNumber + "?body=" +
         encodeURIComponent(message);
 
-    // تلاش برای باز کردن برنامه پیامک گوشی
     window.location.assign(smsLink);
 }
 
