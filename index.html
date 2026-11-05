@@ -35,6 +35,7 @@ input,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #dfc1a2;bor
 .order-btn{width:100%;margin-top:10px}
 .telegram-btn{background:#229ED9}
 .rubika-btn{background:#168de2}
+.instagram-btn{background:linear-gradient(110deg,#833ab4,#fd1d1d,#fcb045)}
 .clear-btn,.copy-btn{padding:12px;border-radius:10px;background:#f5d5c6;color:#713516}
 .copy-btn{width:100%;background:#713516;color:white}
 textarea{min-height:180px;line-height:2}
@@ -76,6 +77,7 @@ footer a{color:#ffe2b9}
 
 <section class="customer-form">
 <h2>📝 ثبت سفارش</h2>
+
 <input type="text" id="customerName" placeholder="نام و نام خانوادگی">
 <input type="tel" id="customerPhone" placeholder="شماره تماس مشتری">
 <input type="text" id="customerAddress" placeholder="آدرس: شهر، محله و خیابان">
@@ -87,6 +89,11 @@ footer a{color:#ffe2b9}
 <h3>💬 ثبت سفارش از طریق روبیکا</h3>
 <button class="order-btn rubika-btn" onclick="sendRubika('https://rubika.ir/metimetimeteti')">💙 ارسال سفارش برای حامی</button>
 <button class="order-btn rubika-btn" onclick="sendRubika('https://rubika.ir/Fallahhhhh')">💙 ارسال سفارش برای فلاح</button>
+
+<h3>📸 ثبت سفارش از طریق اینستاگرام</h3>
+<button class="order-btn instagram-btn" onclick="sendInstagram()">
+📸 ثبت سفارش در دایرکت اینستاگرام
+</button>
 
 <h3>📩 ثبت سفارش از طریق پیامک</h3>
 <button class="order-btn" onclick="sendOrder('09903126670')">📩 ثبت سفارش برای حامی</button>
@@ -106,6 +113,7 @@ footer a{color:#ffe2b9}
 <p>حامی: <a href="tel:09903126670">09903126670</a></p>
 <p>فلاح: <a href="tel:09923683723">09923683723</a></p>
 <p>روبیکا: <a href="https://rubika.ir/metimetimeteti">صفحه شیرینکده</a></p>
+<p>اینستاگرام: <a href="https://www.instagram.com/shirinikaderasht/" target="_blank">shirinikaderasht</a></p>
 <p>شیرینکده، شیرینی با عشق ❤️</p>
 </footer>
 
@@ -247,13 +255,17 @@ message+="\nتعداد کل بسته‌ها: "+total;
 return message;
 }
 
-function sendOrder(phoneNumber){
-const message=makeOrderMessage();
-if(!message)return;
-document.getElementById("smsTarget").textContent="شماره مقصد: "+phoneNumber;
+async function prepareMessage(message){
 document.getElementById("messageText").value=message;
+document.getElementById("smsTarget").textContent="متن سفارش برای ارسال آماده است.";
 document.getElementById("orderMessage").style.display="block";
-window.location.href="sms:"+phoneNumber+"?body="+encodeURIComponent(message);
+
+try{
+await navigator.clipboard.writeText(message);
+alert("متن سفارش کپی شد ❤️ حالا آن را در گفت‌وگو بچسبان و ارسال کن.");
+}catch(error){
+alert("متن سفارش در کادر پایین آماده است؛ آن را کپی کن.");
+}
 }
 
 async function sendRubika(link){
@@ -270,16 +282,20 @@ await prepareMessage(message);
 window.open("https://t.me/"+username,"_blank");
 }
 
-async function prepareMessage(message){
-document.getElementById("messageText").value=message;
-document.getElementById("smsTarget").textContent="متن سفارش برای ارسال آماده است.";
-document.getElementById("orderMessage").style.display="block";
-try{
-await navigator.clipboard.writeText(message);
-alert("متن سفارش کپی شد ❤️ حالا آن را در گفت‌وگو بچسبان و ارسال کن.");
-}catch(error){
-alert("متن سفارش در کادر پایین آماده است؛ آن را کپی کن.");
+async function sendInstagram(){
+const message=makeOrderMessage();
+if(!message)return;
+await prepareMessage(message);
+window.open("https://www.instagram.com/shirinikaderasht/","_blank");
 }
+
+function sendOrder(phoneNumber){
+const message=makeOrderMessage();
+if(!message)return;
+document.getElementById("smsTarget").textContent="شماره مقصد: "+phoneNumber;
+document.getElementById("messageText").value=message;
+document.getElementById("orderMessage").style.display="block";
+window.location.href="sms:"+phoneNumber+"?body="+encodeURIComponent(message);
 }
 
 async function copyOrder(){
