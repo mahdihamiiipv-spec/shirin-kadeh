@@ -25,52 +25,262 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,sans-serif;background:#fff2df;color:#542b18}
-header{background:linear-gradient(120deg,#713516,#a65b2c);color:white;text-align:center;padding:22px}
+
+body{
+margin:0;
+font-family:Tahoma,sans-serif;
+background:#fff2df;
+color:#542b18
+}
+
+header{
+background:linear-gradient(120deg,#713516,#a65b2c);
+color:white;
+text-align:center;
+padding:22px
+}
+
 header h1{margin:0;font-size:32px}
 header p{margin-bottom:0}
-.hero{text-align:center;padding:55px 15px;background:linear-gradient(#fff0d7dd,#fff0d7dd),url("https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=1200");background-size:cover;background-position:center}
+
+.hero{
+text-align:center;
+padding:55px 15px;
+background:linear-gradient(#fff0d7dd,#fff0d7dd),url("https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=1200");
+background-size:cover;
+background-position:center
+}
+
 .hero h2{font-size:28px;color:#713516}
 .hero p{line-height:2}
-button{border:0;cursor:pointer;font-family:inherit}
-.hero button,.order-btn{background:#713516;color:white;padding:13px 20px;border-radius:12px}
-.container{max-width:1100px;margin:auto;padding:18px}
-.section-title{text-align:center;color:#713516;margin:25px 0}
-.seo-intro{background:#fffaf1;border:2px solid #f0d2b0;border-radius:20px;padding:18px;margin:22px 0;line-height:2.2}
+
+button{
+border:0;
+cursor:pointer;
+font-family:inherit
+}
+
+.hero button,.order-btn{
+background:#713516;
+color:white;
+padding:13px 20px;
+border-radius:12px
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:18px
+}
+
+.section-title{
+text-align:center;
+color:#713516;
+margin:25px 0
+}
+
+.seo-intro{
+background:#fffaf1;
+border:2px solid #f0d2b0;
+border-radius:20px;
+padding:18px;
+margin:22px 0;
+line-height:2.2
+}
+
 .seo-intro h2{color:#713516;font-size:21px}
 .seo-intro p{margin-bottom:8px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-.product{background:#fffaf1;border:2px solid #f0d2b0;border-radius:20px;padding:12px;text-align:center;box-shadow:0 5px 15px #71351620}
-.product img{width:100%;height:150px;object-fit:cover;border-radius:14px}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:16px
+}
+
+.product{
+background:#fffaf1;
+border:2px solid #f0d2b0;
+border-radius:20px;
+padding:12px;
+text-align:center;
+box-shadow:0 5px 15px #71351620
+}
+
+.product img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:14px
+}
+
 .product h3{font-size:17px}
-.price{color:#a45c27;font-weight:bold}
-.product-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin:12px}
-.product-controls button,.quantity button{background:#713516;color:white;width:35px;height:35px;border-radius:50%;font-size:20px}
-.product-controls span{background:white;padding:8px 14px;border-radius:8px}
-.add{width:100%;background:#f7aaa8;color:#542719;padding:12px;border-radius:12px;font-weight:bold}
-.cart,.customer-form,.order-message{background:#fffaf1;padding:20px;margin-top:25px;border:2px solid #f0d2b0;border-radius:20px}
+
+.price{
+color:#a45c27;
+font-weight:bold;
+line-height:1.8
+}
+
+.product-total{
+color:#713516;
+background:#fff0d7;
+border-radius:10px;
+padding:9px 5px;
+font-weight:bold;
+line-height:1.8;
+min-height:42px
+}
+
+.product-info{
+color:#9b6848;
+font-size:12px;
+margin:5px 0
+}
+
+.product-controls{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+margin:12px
+}
+
+.product-controls button,.quantity button{
+background:#713516;
+color:white;
+width:35px;
+height:35px;
+border-radius:50%;
+font-size:20px
+}
+
+.product-controls span{
+background:white;
+padding:8px 14px;
+border-radius:8px;
+min-width:55px
+}
+
+.add{
+width:100%;
+background:#f7aaa8;
+color:#542719;
+padding:12px;
+border-radius:12px;
+font-weight:bold
+}
+
+.cart,.customer-form,.order-message{
+background:#fffaf1;
+padding:20px;
+margin-top:25px;
+border:2px solid #f0d2b0;
+border-radius:20px
+}
+
 .cart h2,.customer-form h2{color:#713516}
-.cart-item{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:1px dashed #dfc1a2;padding:12px 0}
-.quantity{display:flex;align-items:center;gap:8px}
-input,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #dfc1a2;border-radius:12px;font-family:inherit}
-.order-btn{width:100%;margin-top:10px}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+border-bottom:1px dashed #dfc1a2;
+padding:12px 0
+}
+
+.cart-item-info{
+display:flex;
+flex-direction:column;
+gap:6px
+}
+
+.cart-item-price{
+color:#a45c27;
+font-size:14px;
+font-weight:bold
+}
+
+.quantity{
+display:flex;
+align-items:center;
+gap:8px
+}
+
+input,textarea{
+width:100%;
+padding:13px;
+margin:8px 0;
+border:1px solid #dfc1a2;
+border-radius:12px;
+font-family:inherit
+}
+
+.order-btn{
+width:100%;
+margin-top:10px
+}
+
 .telegram-btn{background:#229ED9}
 .rubika-btn{background:#168de2}
-.instagram-btn{background:linear-gradient(110deg,#833ab4,#fd1d1d,#fcb045)}
-.clear-btn,.copy-btn{padding:12px;border-radius:10px;background:#f5d5c6;color:#713516}
-.copy-btn{width:100%;background:#713516;color:white}
-textarea{min-height:180px;line-height:2}
-footer{margin-top:30px;padding:25px;text-align:center;background:#542611;color:white;line-height:2.2}
+.instagram-btn{
+background:linear-gradient(110deg,#833ab4,#fd1d1d,#fcb045)
+}
+
+.clear-btn,.copy-btn{
+padding:12px;
+border-radius:10px;
+background:#f5d5c6;
+color:#713516
+}
+
+.copy-btn{
+width:100%;
+background:#713516;
+color:white
+}
+
+textarea{
+min-height:220px;
+line-height:2
+}
+
+.total-price{
+font-size:19px;
+font-weight:bold;
+color:#713516;
+background:#fff0d7;
+padding:12px;
+border-radius:12px
+}
+
+footer{
+margin-top:30px;
+padding:25px;
+text-align:center;
+background:#542611;
+color:white;
+line-height:2.2
+}
+
 footer a{color:#ffe2b9}
+
 @media(max-width:500px){
-.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.products{
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:10px
+}
+
 .product{padding:8px}
 .product img{height:115px}
 .product h3{font-size:14px}
 .product-controls{gap:5px}
+.product-total{font-size:12px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -81,7 +291,9 @@ footer a{color:#ffe2b9}
 <section class="hero">
 <h2>به شیرینکده خوش آمدید 🍪</h2>
 <p>شیرینی‌های خوشمزه و خانگی، آماده‌شده با عشق برای لحظه‌های شیرین شما ❤️</p>
-<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">مشاهده محصولات 🍰</button>
+<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+مشاهده محصولات 🍰
+</button>
 </section>
 
 <div class="container">
@@ -101,14 +313,23 @@ footer a{color:#ffe2b9}
 </section>
 
 <h2 class="section-title">🍪 محصولات خوشمزه ما 🍪</h2>
+
 <div class="products" id="products"></div>
 
 <section class="cart">
 <h2>🛒 سبد خرید شیرینکده</h2>
+
 <div id="cartItems">سبد خرید شما خالی است.</div>
-<p id="total">تعداد کل بسته‌ها: ۰</p>
-<p id="totalPrice">قیمت کل سفارش: به‌زودی</p>
-<button class="clear-btn" onclick="clearCart()">🗑 پاک کردن سبد خرید</button>
+
+<p id="total">مجموع تعداد انتخاب‌شده: ۰</p>
+
+<p class="total-price" id="totalPrice">
+قیمت کل سفارش: ۰ تومان
+</p>
+
+<button class="clear-btn" onclick="clearCart()">
+🗑 پاک کردن سبد خرید
+</button>
 </section>
 
 <section class="customer-form">
@@ -119,12 +340,22 @@ footer a{color:#ffe2b9}
 <input type="text" id="customerAddress" placeholder="آدرس: شهر، محله و خیابان">
 
 <h3>✈️ ثبت سفارش از طریق تلگرام</h3>
-<button class="order-btn telegram-btn" onclick="sendTelegram('mahami7')">✈️ ارسال سفارش برای حامی</button>
-<button class="order-btn telegram-btn" onclick="sendTelegram('Mfallah7878')">✈️ ارسال سفارش برای فلاح</button>
+<button class="order-btn telegram-btn" onclick="sendTelegram('mahami7')">
+✈️ ارسال سفارش برای حامی
+</button>
+
+<button class="order-btn telegram-btn" onclick="sendTelegram('Mfallah7878')">
+✈️ ارسال سفارش برای فلاح
+</button>
 
 <h3>💬 ثبت سفارش از طریق روبیکا</h3>
-<button class="order-btn rubika-btn" onclick="sendRubika('https://rubika.ir/metimetimeteti')">💙 ارسال سفارش برای حامی</button>
-<button class="order-btn rubika-btn" onclick="sendRubika('https://rubika.ir/Fallahhhhh')">💙 ارسال سفارش برای فلاح</button>
+<button class="order-btn rubika-btn" onclick="sendRubika('https://rubika.ir/metimetimeteti')">
+💙 ارسال سفارش برای حامی
+</button>
+
+<button class="order-btn rubika-btn" onclick="sendRubika('https://rubika.ir/Fallahhhhh')">
+💙 ارسال سفارش برای فلاح
+</button>
 
 <h3>📸 ثبت سفارش از طریق اینستاگرام</h3>
 <button class="order-btn instagram-btn" onclick="sendInstagram()">
@@ -132,15 +363,22 @@ footer a{color:#ffe2b9}
 </button>
 
 <h3>📩 ثبت سفارش از طریق پیامک</h3>
-<button class="order-btn" onclick="sendOrder('09903126670')">📩 ثبت سفارش برای حامی</button>
-<button class="order-btn" onclick="sendOrder('09923683723')">📩 ثبت سفارش برای فلاح</button>
+<button class="order-btn" onclick="sendOrder('09903126670')">
+📩 ثبت سفارش برای حامی
+</button>
+
+<button class="order-btn" onclick="sendOrder('09923683723')">
+📩 ثبت سفارش برای فلاح
+</button>
 </section>
 
 <section class="order-message" id="orderMessage" style="display:none">
 <h3>متن سفارش شما آماده است ❤️</h3>
 <p id="smsTarget"></p>
 <textarea id="messageText" readonly></textarea>
-<button class="copy-btn" onclick="copyOrder()">کپی متن سفارش</button>
+<button class="copy-btn" onclick="copyOrder()">
+کپی متن سفارش
+</button>
 </section>
 
 </div>
@@ -150,122 +388,294 @@ footer a{color:#ffe2b9}
 <p>حامی: <a href="tel:09903126670">09903126670</a></p>
 <p>فلاح: <a href="tel:09923683723">09923683723</a></p>
 <p>روبیکا: <a href="https://rubika.ir/metimetimeteti">صفحه شیرینکده</a></p>
-<p>اینستاگرام: <a href="https://www.instagram.com/shirinikaderasht/" target="_blank" rel="noopener noreferrer">shirinikaderasht</a></p>
+<p>اینستاگرام:
+<a href="https://www.instagram.com/shirinikaderasht/" target="_blank" rel="noopener noreferrer">
+shirinikaderasht
+</a>
+</p>
 <p>شیرینکده، شیرینی با عشق ❤️</p>
 </footer>
 
 <script>
+
 const products=[
-{name:"نان لشت نشا",image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600"},
-{name:"نان تخته‌ای",image:"https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=600"},
-{name:"شیرینی نارگیلی",image:"https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600"},
-{name:"شیرینی گردویی",image:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600"},
-{name:"انواع ویفر دست ساز",image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600"},
-{name:"کلوچه فومن",image:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600"}
+
+{
+name:"نان لشت نشا",
+image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600",
+price:65000,
+unit:"عدد",
+step:5
+},
+
+{
+name:"نان تخته‌ای",
+image:"https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=600",
+price:60000,
+unit:"عدد",
+step:5
+},
+
+{
+name:"شیرینی نارگیلی",
+image:"https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600",
+price:850000,
+unit:"بسته",
+step:1,
+packageInfo:"هر بسته شامل ۲۰ عدد شیرینی است."
+},
+
+{
+name:"شیرینی گردویی",
+image:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600",
+price:850000,
+unit:"بسته",
+step:1,
+packageInfo:"هر بسته شامل ۲۰ عدد شیرینی است."
+},
+
+{
+name:"انواع ویفر دست ساز",
+image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600",
+price:20000,
+unit:"عدد",
+step:5
+},
+
+{
+name:"کلوچه فومن",
+image:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600",
+price:35000,
+unit:"عدد",
+step:5
+}
+
 ];
 
-const STEP=5;
 let cart={};
 
+function money(amount){
+return amount.toLocaleString("fa-IR")+" تومان";
+}
+
+function getProduct(name){
+return products.find(product=>product.name===name);
+}
+
 function showProducts(){
+
 const container=document.getElementById("products");
 container.innerHTML="";
+
 products.forEach((product,index)=>{
+
 const card=document.createElement("div");
 card.className="product";
+
 const img=document.createElement("img");
 img.src=product.image;
 img.alt=product.name;
 img.loading="lazy";
+
 const title=document.createElement("h3");
 title.textContent=product.name;
+
 const price=document.createElement("p");
 price.className="price";
-price.textContent="قیمت: به‌زودی";
+price.textContent="قیمت هر "+product.unit+": "+money(product.price);
+
+const info=document.createElement("p");
+info.className="product-info";
+info.textContent=product.packageInfo||"";
+
 const count=document.createElement("p");
 count.id="count-"+index;
+
+const subtotal=document.createElement("p");
+subtotal.className="product-total";
+subtotal.id="subtotal-"+index;
+
 const controls=document.createElement("div");
 controls.className="product-controls";
+
 const minus=document.createElement("button");
 minus.textContent="−";
-minus.onclick=()=>changeProduct(index,-STEP);
+minus.setAttribute("aria-label","کاهش تعداد");
+minus.onclick=()=>changeProduct(index,-product.step);
+
 const number=document.createElement("span");
 number.id="number-"+index;
+
 const plus=document.createElement("button");
 plus.textContent="+";
-plus.onclick=()=>changeProduct(index,STEP);
+plus.setAttribute("aria-label","افزایش تعداد");
+plus.onclick=()=>changeProduct(index,product.step);
+
 controls.append(minus,number,plus);
+
 const add=document.createElement("button");
 add.className="add";
-add.textContent="افزودن ۵ بسته 🛒";
-add.onclick=()=>changeProduct(index,STEP);
-card.append(img,title,price,count,controls,add);
+add.textContent="افزودن "+product.step+" "+product.unit+" 🛒";
+add.onclick=()=>changeProduct(index,product.step);
+
+card.append(
+img,
+title,
+price,
+info,
+count,
+subtotal,
+controls,
+add
+);
+
 container.appendChild(card);
+
 });
+
 updateProductCounts();
+
 }
 
 function changeProduct(index,amount){
-const name=products[index].name;
+
+const product=products[index];
+const name=product.name;
+
 cart[name]=(cart[name]||0)+amount;
-if(cart[name]<=0)delete cart[name];
+
+if(cart[name]<=0){
+delete cart[name];
+}
+
 showCart();
+
 }
 
 function changeQuantity(name,amount){
-if(!cart[name])return;
+
+const product=getProduct(name);
+
+if(!product||!cart[name])return;
+
 cart[name]+=amount;
-if(cart[name]<=0)delete cart[name];
+
+if(cart[name]<=0){
+delete cart[name];
+}
+
 showCart();
+
 }
 
 function updateProductCounts(){
+
 products.forEach((product,index)=>{
+
 const quantity=cart[product.name]||0;
-document.getElementById("number-"+index).textContent=quantity;
-document.getElementById("count-"+index).textContent="تعداد انتخاب‌شده: "+quantity+" بسته";
+const subtotal=quantity*product.price;
+
+document.getElementById("number-"+index).textContent=
+quantity.toLocaleString("fa-IR");
+
+document.getElementById("count-"+index).textContent=
+"تعداد انتخاب‌شده: "+quantity.toLocaleString("fa-IR")+" "+product.unit;
+
+document.getElementById("subtotal-"+index).textContent=
+"مجموع قیمت: "+money(subtotal);
+
 });
+
 }
 
 function showCart(){
+
 const container=document.getElementById("cartItems");
+
 container.innerHTML="";
-let total=0;
+
+let totalQuantity=0;
+let totalPrice=0;
+
 if(Object.keys(cart).length===0){
+
 container.textContent="سبد خرید شما خالی است. 🍪";
+
 }
+
 for(const name in cart){
-total+=cart[name];
+
+const product=getProduct(name);
+
+if(!product)continue;
+
+const quantity=cart[name];
+const subtotal=quantity*product.price;
+
+totalQuantity+=quantity;
+totalPrice+=subtotal;
+
 const item=document.createElement("div");
 item.className="cart-item";
+
+const info=document.createElement("div");
+info.className="cart-item-info";
+
 const title=document.createElement("strong");
-title.textContent=name+" — "+cart[name]+" بسته";
+
+title.textContent=
+name+" — "+quantity.toLocaleString("fa-IR")+" "+product.unit;
+
+const itemPrice=document.createElement("span");
+itemPrice.className="cart-item-price";
+
+itemPrice.textContent="مجموع: "+money(subtotal);
+
+info.append(title,itemPrice);
+
 const controls=document.createElement("div");
 controls.className="quantity";
+
 const minus=document.createElement("button");
 minus.textContent="−";
-minus.onclick=()=>changeQuantity(name,-STEP);
+minus.onclick=()=>changeQuantity(name,-product.step);
+
 const plus=document.createElement("button");
 plus.textContent="+";
-plus.onclick=()=>changeQuantity(name,STEP);
+plus.onclick=()=>changeQuantity(name,product.step);
+
 controls.append(minus,plus);
-item.append(title,controls);
+
+item.append(info,controls);
+
 container.appendChild(item);
+
 }
-document.getElementById("total").textContent="تعداد کل بسته‌ها: "+total;
-document.getElementById("totalPrice").textContent="قیمت کل سفارش: به‌زودی";
+
+document.getElementById("total").textContent=
+"مجموع تعداد انتخاب‌شده: "+totalQuantity.toLocaleString("fa-IR");
+
+document.getElementById("totalPrice").textContent=
+"قیمت کل سفارش: "+money(totalPrice);
+
 updateProductCounts();
+
 }
 
 function clearCart(){
+
 cart={};
 showCart();
+
 }
 
 function makeOrderMessage(){
+
 if(Object.keys(cart).length===0){
+
 alert("لطفاً ابتدا محصولی به سبد خرید اضافه کن.");
 return null;
+
 }
 
 const name=document.getElementById("customerName").value.trim();
@@ -273,86 +683,158 @@ const phone=document.getElementById("customerPhone").value.trim();
 const address=document.getElementById("customerAddress").value.trim();
 
 if(!name||!phone||!address){
+
 alert("لطفاً نام، شماره تماس و آدرس خود را وارد کن.");
 return null;
+
 }
 
 let message="سلام، سفارش جدید شیرینکده ثبت شد 🍪\n\n";
+
 message+="نام مشتری: "+name+"\n";
 message+="شماره تماس: "+phone+"\n";
 message+="آدرس: "+address+"\n\n";
+
 message+="محصولات سفارش:\n";
 
-let total=0;
-for(const product in cart){
-message+=product+": "+cart[product]+" بسته\n";
-total+=cart[product];
+let totalQuantity=0;
+let totalPrice=0;
+
+for(const productName in cart){
+
+const product=getProduct(productName);
+
+if(!product)continue;
+
+const quantity=cart[productName];
+const subtotal=quantity*product.price;
+
+totalQuantity+=quantity;
+totalPrice+=subtotal;
+
+message+=
+productName+": "+
+quantity+" "+product.unit+
+" — "+money(subtotal)+"\n";
+
 }
-message+="\nتعداد کل بسته‌ها: "+total;
+
+message+="\nمجموع تعداد انتخاب‌شده: "+totalQuantity;
+message+="\nقیمت کل سفارش: "+money(totalPrice);
+
 return message;
+
 }
 
 async function prepareMessage(message){
+
 document.getElementById("messageText").value=message;
-document.getElementById("smsTarget").textContent="متن سفارش برای ارسال آماده است.";
+
+document.getElementById("smsTarget").textContent=
+"متن سفارش برای ارسال آماده است.";
+
 document.getElementById("orderMessage").style.display="block";
 
 try{
+
 await navigator.clipboard.writeText(message);
+
 alert("متن سفارش کپی شد ❤️ حالا آن را در گفت‌وگو بچسبان و ارسال کن.");
+
 }catch(error){
+
 alert("متن سفارش در کادر پایین آماده است؛ آن را کپی کن.");
+
 }
+
 }
 
 async function sendRubika(link){
+
 const message=makeOrderMessage();
+
 if(!message)return;
+
 await prepareMessage(message);
+
 window.open(link,"_blank");
+
 }
 
 async function sendTelegram(username){
+
 const message=makeOrderMessage();
+
 if(!message)return;
+
 await prepareMessage(message);
+
 window.open("https://t.me/"+username,"_blank");
+
 }
 
 async function sendInstagram(){
+
 const message=makeOrderMessage();
+
 if(!message)return;
+
 await prepareMessage(message);
+
 window.open("https://www.instagram.com/shirinikaderasht/","_blank");
+
 }
 
 function sendOrder(phoneNumber){
+
 const message=makeOrderMessage();
+
 if(!message)return;
-document.getElementById("smsTarget").textContent="شماره مقصد: "+phoneNumber;
+
+document.getElementById("smsTarget").textContent=
+"شماره مقصد: "+phoneNumber;
+
 document.getElementById("messageText").value=message;
+
 document.getElementById("orderMessage").style.display="block";
-window.location.href="sms:"+phoneNumber+"?body="+encodeURIComponent(message);
+
+window.location.href=
+"sms:"+phoneNumber+"?body="+encodeURIComponent(message);
+
 }
 
 async function copyOrder(){
+
 const message=makeOrderMessage();
+
 if(!message)return;
+
 document.getElementById("messageText").value=message;
+
 try{
+
 await navigator.clipboard.writeText(message);
+
 alert("متن سفارش کپی شد ❤️");
+
 }catch(error){
+
 const textarea=document.getElementById("messageText");
+
 textarea.focus();
 textarea.select();
+
 document.execCommand("copy");
+
 alert("متن سفارش کپی شد ❤️");
+
 }
+
 }
 
 showProducts();
 showCart();
+
 </script>
 
 </body>
