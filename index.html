@@ -29,7 +29,7 @@ button{border:0;cursor:pointer;font-family:inherit}
 .seo-intro h2{color:#713516;font-size:21px}
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
 .product{background:#fffaf1;border:2px solid #f0d2b0;border-radius:20px;padding:12px;text-align:center;box-shadow:0 5px 15px #71351620}
-.product img{width:100%;height:150px;object-fit:cover;border-radius:14px;background:#f3e2ce}
+.product img{width:100%;height:150px;object-fit:cover;border-radius:14px;background:#f3e2ce;cursor:zoom-in}
 .product h3{font-size:17px}.price{color:#a45c27;font-weight:bold;line-height:1.8}
 .product-total{color:#713516;background:#fff0d7;border-radius:10px;padding:9px 5px;font-weight:bold;line-height:1.8;min-height:42px}
 .product-info{color:#9b6848;font-size:12px;margin:5px 0}
@@ -53,6 +53,13 @@ textarea{min-height:220px;line-height:2}
 .total-price{font-size:19px;font-weight:bold;color:#713516;background:#fff0d7;padding:12px;border-radius:12px}
 footer{margin-top:30px;padding:25px;text-align:center;background:#542611;color:white;line-height:2.2}
 footer a{color:#ffe2b9}
+
+/* نمایش تمام‌صفحه عکس محصول */
+.image-lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(25,12,6,.94);align-items:center;justify-content:center;padding:55px 15px 20px}
+.image-lightbox.open{display:flex}
+.image-lightbox img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 8px 35px #0008}
+.lightbox-close{position:absolute;top:12px;left:16px;width:44px;height:44px;border-radius:50%;background:#fff;color:#542b18;font-size:30px;line-height:1}
+.lightbox-caption{position:absolute;top:20px;right:18px;left:70px;color:white;text-align:right;font-size:16px}
 @media(max-width:500px){.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{padding:8px}.product img{height:115px}.product h3{font-size:14px}.product-controls{gap:5px}.product-total{font-size:12px}}
 </style>
 </head>
@@ -109,6 +116,14 @@ footer a{color:#ffe2b9}
 <p>اینستاگرام: <a href="https://www.instagram.com/shirinikaderasht/" target="_blank" rel="noopener noreferrer">shirinikaderasht</a></p>
 <p>شیرینکده، شیرینی با عشق ❤️</p>
 </footer>
+
+<!-- پنجره بزرگ‌نمایی عکس؛ با لمس بیرون عکس یا × بسته می‌شود -->
+<div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="نمایش بزرگ عکس محصول" onclick="closeLightbox()">
+<button class="lightbox-close" type="button" aria-label="بستن" onclick="closeLightbox(event)">×</button>
+<div class="lightbox-caption" id="lightboxCaption"></div>
+<img id="lightboxImage" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
 <script>
 const products=[
 {name:"نخودچی",image:"1794306299504.jpg",price:20000,unit:"عدد",step:1},
@@ -128,6 +143,29 @@ const products=[
 {name:"بامیه",image:"1794307080624.jpg",price:500000,unit:"بسته",step:1,packageInfo:"هر بسته شامل ۲۰ عدد است."}
 ];
 let cart={};
+let lastFocusedElement=null;
+function openLightbox(src,alt){
+ const box=document.getElementById("imageLightbox");
+ const image=document.getElementById("lightboxImage");
+ lastFocusedElement=document.activeElement;
+ image.src=src;image.alt=alt||"عکس محصول";
+ document.getElementById("lightboxCaption").textContent=alt||"";
+ box.classList.add("open");
+ document.body.style.overflow="hidden";
+ document.getElementById("lightboxClose")?.focus();
+}
+function closeLightbox(event){
+ if(event)event.stopPropagation();
+ const box=document.getElementById("imageLightbox");
+ if(!box.classList.contains("open"))return;
+ box.classList.remove("open");
+ document.getElementById("lightboxImage").src="";
+ document.body.style.overflow="";
+ if(lastFocusedElement&&lastFocusedElement.focus)lastFocusedElement.focus();
+}
+document.addEventListener("keydown",function(event){
+ if(event.key==="Escape")closeLightbox();
+});
 function money(amount){return amount.toLocaleString("fa-IR")+" تومان"}
 function getProduct(name){return products.find(p=>p.name===name)}
 function showProducts(){
@@ -135,6 +173,7 @@ function showProducts(){
  products.forEach((p,i)=>{
   const card=document.createElement("div");card.className="product";
   const img=document.createElement("img");img.src=p.image;img.alt=p.name;img.loading="lazy";
+  img.onclick=()=>openLightbox(img.currentSrc||img.src,p.name);
   img.onerror=()=>{img.onerror=null;img.src="https://placehold.co/600x400/f3e2ce/713516?text="+encodeURIComponent(p.name)};
   const title=document.createElement("h3");title.textContent=p.name;
   const price=document.createElement("p");price.className="price";price.textContent="قیمت هر "+p.unit+": "+money(p.price);
