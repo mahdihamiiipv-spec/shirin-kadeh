@@ -53,8 +53,6 @@ textarea{min-height:220px;line-height:2}
 .total-price{font-size:19px;font-weight:bold;color:#713516;background:#fff0d7;padding:12px;border-radius:12px}
 footer{margin-top:30px;padding:25px;text-align:center;background:#542611;color:white;line-height:2.2}
 footer a{color:#ffe2b9}
-
-/* نمایش تمام‌صفحه عکس محصول */
 .image-lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(25,12,6,.94);align-items:center;justify-content:center;padding:55px 15px 20px}
 .image-lightbox.open{display:flex}
 .image-lightbox img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 8px 35px #0008}
@@ -116,18 +114,15 @@ footer a{color:#ffe2b9}
 <p>اینستاگرام: <a href="https://www.instagram.com/shirinikaderasht/" target="_blank" rel="noopener noreferrer">shirinikaderasht</a></p>
 <p>شیرینکده، شیرینی با عشق ❤️</p>
 </footer>
-
-<!-- پنجره بزرگ‌نمایی عکس؛ با لمس بیرون عکس یا × بسته می‌شود -->
 <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="نمایش بزرگ عکس محصول" onclick="closeLightbox()">
-<button class="lightbox-close" type="button" aria-label="بستن" onclick="closeLightbox(event)">×</button>
+<button class="lightbox-close" id="lightboxClose" type="button" aria-label="بستن" onclick="closeLightbox(event)">×</button>
 <div class="lightbox-caption" id="lightboxCaption"></div>
 <img id="lightboxImage" src="" alt="" onclick="event.stopPropagation()">
 </div>
-
 <script>
 const products=[
 {name:"نخودچی",image:"1794306299504.jpg",price:20000,unit:"عدد",step:1},
-{name:"نان لشت نشا",image:"91f9300cce66c93b7be7d86ff8a0c671.jpg",price:65000,unit:"عدد",step:5},
+{name:"نان لشت نشا",image:"nan-lashtnesha.jpg",price:65000,unit:"عدد",step:5},
 {name:"نان تخته‌ای",image:"1794306430402.jpg",price:60000,unit:"عدد",step:5},
 {name:"شیرینی نارگیلی",image:"https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600",price:850000,unit:"بسته",step:1,packageInfo:"هر بسته شامل ۲۰ عدد شیرینی است."},
 {name:"شیرینی گردویی",image:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600",price:850000,unit:"بسته",step:1,packageInfo:"هر بسته شامل ۲۰ عدد شیرینی است."},
@@ -152,7 +147,7 @@ function openLightbox(src,alt){
  document.getElementById("lightboxCaption").textContent=alt||"";
  box.classList.add("open");
  document.body.style.overflow="hidden";
- document.getElementById("lightboxClose")?.focus();
+ document.getElementById("lightboxClose").focus();
 }
 function closeLightbox(event){
  if(event)event.stopPropagation();
@@ -163,9 +158,7 @@ function closeLightbox(event){
  document.body.style.overflow="";
  if(lastFocusedElement&&lastFocusedElement.focus)lastFocusedElement.focus();
 }
-document.addEventListener("keydown",function(event){
- if(event.key==="Escape")closeLightbox();
-});
+document.addEventListener("keydown",function(event){if(event.key==="Escape")closeLightbox()});
 function money(amount){return amount.toLocaleString("fa-IR")+" تومان"}
 function getProduct(name){return products.find(p=>p.name===name)}
 function showProducts(){
